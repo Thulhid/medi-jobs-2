@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+dist
+build
+coverage
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+**/*.min.*
+public/**/*.svg
+.prisma
+prisma/**
+**/*.generated.*
+**/*.snap
+**/*.lock

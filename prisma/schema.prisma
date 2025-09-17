@@ -1,0 +1,209 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  hashedPassword String
+  roleId         Int
+  createdAt      DateTime @default(now())
+
+  role       UserRole     @relation(fields: [roleId], references: [id])
+  systemUser SystemUser[]
+  recruiter  Recruiter[]
+}
+
+model UserRole {
+  id        Int      @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime @default(now())
+
+  users User[]
+}
+
+model SystemUser {
+  id        Int      @id @default(autoincrement())
+  firstname String
+  lastname  String
+  email     String   @unique
+  mobile    String
+  userId    Int      @unique
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Hospital {
+  id           Int       @id @default(autoincrement())
+  name         String
+  email        String    @unique
+  city         String
+  country      String
+  mobile       String
+  logo         String
+  banner       String?
+  description  String
+  activeStatus Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @default(now())
+
+  sbus      Sbu[]
+  recruiter Recruiter[]
+  vacancy   Vacancy[]
+}
+
+model Sbu {
+  id         Int      @id @default(autoincrement())
+  name       String
+  hospitalId Int
+  city       String
+  createdAt  DateTime @default(now())
+
+  hospital Hospital  @relation(fields: [hospitalId], references: [id])
+  vacancy  Vacancy[]
+}
+
+model Recruiter {
+  id              Int      @id @default(autoincrement())
+  firstname       String
+  lastname        String
+  email           String   @unique
+  mobile          String
+  recruiterTypeId Int
+  hospitalId      Int
+  userId          Int      @unique
+  createdAt       DateTime @default(now())
+
+  hospital      Hospital      @relation(fields: [hospitalId], references: [id])
+  recruiterType RecruiterType @relation(fields: [recruiterTypeId], references: [id])
+  user          User          @relation(fields: [userId], references: [id])
+  vacancy       Vacancy[]
+}
+
+model RecruiterType {
+  id        Int      @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime @default(now())
+
+  recruiters Recruiter[]
+}
+
+model WorkPlaceType {
+  id        Int       @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime  @default(now())
+  Vacancy   Vacancy[]
+}
+
+model VacancyOptions {
+  id        Int      @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime @default(now())
+}
+
+model Status {
+  id        Int       @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime  @default(now())
+  vacancy   Vacancy[]
+}
+
+model CorporateTitle {
+  id        Int       @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime  @default(now())
+  vacancy   Vacancy[]
+}
+
+model EmploymentType {
+  id        Int      @id @default(autoincrement())
+  name      String
+  metaCode  String
+  createdAt DateTime @default(now())
+
+  Vacancy Vacancy[]
+}
+
+model Vacancy {
+  id               Int      @id @default(autoincrement())
+  city             String
+  corporateTitleId Int
+  country          String
+  designation      String
+  email            String
+  employmentTypeId Int
+  endDate          DateTime
+  noOfPositions    Int
+  sbuId            Int
+  startDate        DateTime
+  summary          String
+  workPlaceTypeId  Int
+  hospitalId       Int
+  recruiterId      Int
+  banner           String
+  contactPerson    String
+  portalUrl        String?
+  readStatus       String
+  statusId         Int
+  vacancyOption    String?
+  rejectionReason  String?
+  createdAt        DateTime @default(now())
+
+  corporateTitle CorporateTitle @relation(fields: [corporateTitleId], references: [id])
+  employmentType EmploymentType @relation(fields: [employmentTypeId], references: [id])
+  sbu            Sbu            @relation(fields: [sbuId], references: [id])
+  workPlaceType  WorkPlaceType  @relation(fields: [workPlaceTypeId], references: [id])
+  hospital       Hospital       @relation(fields: [hospitalId], references: [id])
+  recruiter      Recruiter      @relation(fields: [recruiterId], references: [id])
+  status         Status         @relation(fields: [statusId], references: [id])
+  clicks         Clicks[]
+}
+
+model Advertisement {
+  id        Int      @id @default(autoincrement())
+  image     String
+  video     String
+  createdAt DateTime @default(now())
+}
+
+model Clicks {
+  id        Int      @id @default(autoincrement())
+  vacancyId Int
+  createdAt DateTime @default(now())
+
+  vacancy Vacancy @relation(fields: [vacancyId], references: [id])
+}
+
+model UserRequest {
+  id          Int      @id @default(autoincrement())
+  firstname   String
+  lastname    String
+  contact     String
+  email       String
+  designation String
+  hospital    String
+  message     String
+  createdAt   DateTime @default(now())
+}
+
+model News {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
