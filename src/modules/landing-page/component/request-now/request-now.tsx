@@ -3,7 +3,7 @@
 import {Control, Resolver, SubmitHandler, useForm} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Building, CheckCircle, Loader2, Mail, Phone, User} from "lucide-react";
+import {Building, CheckCircle, Mail, Phone, User} from "lucide-react";
 import {useEffect, useState} from "react";
 import {LoadingSpinner} from "@/modules/shared/components/loading-spinner";
 import Image from "next/image";
@@ -12,7 +12,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@
 import {Input} from "@/modules/ui/components/input";
 import {Textarea} from "@/modules/ui/components/textarea";
 import {Button} from "@/modules/ui/components/button";
-import {useCreateUserRequest} from "@/modules/backend/user-request/hooks/use-create-user-reques";
+// import { useCreateUserRequest } from "@/modules/backend/user-request/hooks/use-create-user-reques";
 
 const schema = z.object({
   firstname: z.string().min(1, "First name is required"),
@@ -27,7 +27,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export const RequestNow = () => {
-  const { createUserRequest, userRequestLoading } = useCreateUserRequest();
+  // const { createUserRequest, userRequestLoading } = useCreateUserRequest();
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null;
@@ -58,13 +58,14 @@ export const RequestNow = () => {
     },
   });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit = async (values: FormValues) => {
     try {
       setSubmitStatus({ type: null, message: '' });
-
-      const result = await createUserRequest(values);
-
-      if (result) {
+      
+      // const result = await createUserRequest(values);
+      
+      if (true) {
         setSubmitStatus({
           type: 'success',
           message: 'Thank you! Your request has been submitted successfully.'
@@ -98,7 +99,7 @@ export const RequestNow = () => {
 
       <div className="items-center justify-center w-full relative">
         <Image
-          src={'/images/landing-page-slider/image2.jpg'}
+          src={'/images/landing_page_slider/1 (5).jpg'}
           alt={'medijobs.lk'}
           width={1920}
           height={1080}
@@ -270,17 +271,16 @@ export const RequestNow = () => {
               <div className="flex justify-center pt-4">
                 <Button
                   type="submit"
-                  disabled={userRequestLoading}
                   className="min-w-48 bg-[#007F4E] hover:bg-[#006A41] text-white"
                   size="lg"
                 >
-                  {userRequestLoading ? (
-                    <span className="inline-flex items-center gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" /> Submitting...
-                    </span>
-                  ) : (
-                    "Submit Request"
-                  )}
+                  {/*{userRequestLoading ? (*/}
+                  {/*  <span className="inline-flex items-center gap-2">*/}
+                  {/*    <Loader2 className="w-4 h-4 animate-spin" /> Submitting...*/}
+                  {/*  </span>*/}
+                  {/*) : (*/}
+                  {/*  "Submit Request"*/}
+                  {/*)}*/}
                 </Button>
               </div>
             </form>

@@ -1,17 +1,24 @@
 "use client";
 
-import {Control, Resolver, SubmitHandler, useForm} from "react-hook-form";
-import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {Loader2, Mail, MapPin, Phone} from "lucide-react";
-import {FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp} from "react-icons/fa";
-import {useEffect, useState} from "react";
-import {LoadingSpinner} from "@/modules/shared/components/loading-spinner";
+import { Control, Resolver, SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Phone, Mail, MapPin, Loader2} from "lucide-react";
+import { FaFacebook, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { LoadingSpinner } from "@/modules/shared/components/loading-spinner";
 
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/modules/ui/components/form";
-import {Input} from "@/modules/ui/components/input";
-import {Textarea} from "@/modules/ui/components/textarea";
-import {Button} from "@/modules/ui/components/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/modules/ui/components/form";
+import { Input } from "@/modules/ui/components/input";
+import { Textarea } from "@/modules/ui/components/textarea";
+import { Button } from "@/modules/ui/components/button";
 
 import Image from "next/image";
 
@@ -108,7 +115,7 @@ export const ContactPage = () => {
 
       <div className="items-center justify-center w-full relative">
         <Image
-          src={'/images/landing-page-slider/image1.jpg'}
+          src={'/images/landing_page_slider/1 (4).jpg'}
           alt={'medijobs.lk'}
           width={1920}
           height={1080}

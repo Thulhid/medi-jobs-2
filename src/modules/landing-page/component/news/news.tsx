@@ -1,85 +1,50 @@
 "use client";
 
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Image from 'next/image'
-import {ChevronLeft, ChevronRight, X} from 'lucide-react'
-import {LoadingSpinner} from "@/modules/shared/components/loading-spinner";
-import {useGetAllNews} from "@/modules/backend/news/hooks/use-get-all-news";
 
+const newsArticles = [
+    {
+        id: 1,
+        title: "Sri Lanka Launches New Healthcare Initiative",
+        description:
+            "The Ministry of Health announced a nationwide healthcare program aimed at improving access to medical services in rural areas. The program will focus on providing modern facilities and better-trained staff.",
+        image: "/images/news/healthcare-initiative.jpg",
+        category: "Health",
+    },
+    {
+        id: 2,
+        title: "Colombo Medical Conference 2025 Announced",
+        description:
+            "The annual Colombo Medical Conference will bring together top medical professionals from around the world to share knowledge, research, and new technology in the healthcare sector.",
+        image: "/images/news/medical-conference.jpg",
+        category: "Events",
+    },
+    {
+        id: 3,
+        title: "Breakthrough in Cardiology Research",
+        description:
+            "Researchers at the National Hospital have reported a major breakthrough in cardiology treatments, potentially improving outcomes for patients with heart disease across the country.",
+        image: "/images/news/cardiology-breakthrough.jpg",
+        category: "Research",
+    },
+    {
+        id: 4,
+        title: "New Radiology Department Opens in Kandy",
+        description:
+            "Kandy Teaching Hospital has officially opened a state-of-the-art radiology department, equipped with the latest imaging technology to better diagnose and treat patients.",
+        image: "/images/news/radiology-department.jpg",
+        category: "Infrastructure",
+    },
+];
 
 export const News = () => {
-  const { news: newsData, newsLoading: dataLoading } = useGetAllNews();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const [loading, setLoading] = useState(true);
-
-  // Convert database news to display format and extract images
-  const newsArticles = newsData || [];
-  const images = newsArticles.map(article => article.image);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const openImageModal = (imageSrc: string) => {
-    const index = images.indexOf(imageSrc);
-    setCurrentImageIndex(index);
-    setSelectedImage(imageSrc);
-  };
-
-  const closeImageModal = () => {
-    setSelectedImage(null);
-  };
-
-  const goToPreviousImage = () => {
-    const prevIndex = currentImageIndex > 0 ? currentImageIndex - 1 : images.length - 1;
-    setCurrentImageIndex(prevIndex);
-    setSelectedImage(images[prevIndex]);
-  };
-
-  const goToNextImage = () => {
-    const nextIndex = currentImageIndex < images.length - 1 ? currentImageIndex + 1 : 0;
-    setCurrentImageIndex(nextIndex);
-    setSelectedImage(images[nextIndex]);
-  };
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (selectedImage) {
-        if (e.key === 'ArrowLeft') {
-          goToPreviousImage();
-        } else if (e.key === 'ArrowRight') {
-          goToNextImage();
-        } else if (e.key === 'Escape') {
-          closeImageModal();
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [selectedImage, currentImageIndex]);
-
-
-  if (loading || dataLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <LoadingSpinner />
-      </div>
-    );
-  }
-
   return (
     <section className='w-full mb-4'>
 
       <div className="items-center justify-center w-full relative">
         <Image
-          src={'/images/landing-page-slider/image1.jpg'}
+          src={'/images/landing_page_slider/1 (4).jpg'}
           alt={'medijobs.lk'}
           width={1920}
           height={1080}
@@ -106,7 +71,7 @@ export const News = () => {
             >
               <div
                 className="relative h-48 cursor-pointer group"
-                onClick={() => openImageModal(article.image)}
+                onClick={() => {}}
               >
                 <Image
                   src={article.image}
@@ -140,60 +105,6 @@ export const News = () => {
           </div>
         )}
       </div>
-
-
-      {selectedImage && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={closeImageModal}>
-          <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-
-            <button
-              onClick={closeImageModal}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
-            >
-              <X className="w-8 h-8" />
-            </button>
-
-            <button
-              onClick={goToPreviousImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 p-2 hover:bg-black/30 rounded-full"
-            >
-              <ChevronLeft className="w-8 h-8" />
-            </button>
-
-            <button
-              onClick={goToNextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 p-2 hover:bg-black/30 rounded-full"
-            >
-              <ChevronRight className="w-8 h-8" />
-            </button>
-
-            <div className="relative max-h-full max-w-full">
-              <Image
-                src={selectedImage}
-                alt={`Gallery image ${currentImageIndex + 1} of ${images.length}`}
-                width={1200}
-                height={800}
-                className="object-cover max-h-[90vh] w-full h-full"
-                priority
-              />
-            </div>
-
-            <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setCurrentImageIndex(index);
-                    setSelectedImage(images[index]);
-                  }}
-                  className={`w-3 h-3 rounded-full transition-colors ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                    }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   )
 }

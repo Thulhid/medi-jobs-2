@@ -1,11 +1,11 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import {useParams} from "next/navigation";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import {Mail, Phone} from "lucide-react";
-import {LoadingSpinner} from "@/modules/shared/components/loading-spinner";
+import { Mail, Phone } from "lucide-react";
+import { LoadingSpinner } from "@/modules/shared/components/loading-spinner";
 
 type Hospital = {
   id: number;
@@ -96,7 +96,7 @@ export const HospitalPublicDetail = () => {
         const res = await fetch(`/api/backend/vacancy?public=true`);
         if (!res.ok) throw new Error("Failed to load jobs");
         const data = await res.json();
-
+      
         const hospitalJobs = data.filter((job: Job) => job.hospitalId === parseInt(id));
         setJobs(hospitalJobs);
       } catch (e: unknown) {
@@ -121,8 +121,8 @@ export const HospitalPublicDetail = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Hospital Not Available</h1>
           <p className="text-gray-600 mb-6">
-            {error?.includes('not available')
-              ? "This hospital is currently not available for public viewing."
+            {error?.includes('not available') 
+              ? "This hospital is currently not available for public viewing." 
               : error || "Hospital not found"}
           </p>
           <Link
@@ -142,7 +142,7 @@ export const HospitalPublicDetail = () => {
       <div className="items-center justify-center w-full relative">
 
         <Image
-          src={hospital.banner ?? '/images/landing-page-slider/image1.jpg'}
+          src={hospital.banner ?? '/images/landing_page_slider/1 (4).jpg'}
           alt={hospital.name}
           width={1920}
           height={1080}
@@ -204,7 +204,7 @@ export const HospitalPublicDetail = () => {
           <div className="text-center py-8">
             <p className="text-gray-600">No vacancies available at this hospital currently.</p>
           </div>
-        ) : (
+        ) : (  
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {jobs.filter(job => job.hospitalId === hospital.id).map((job) => (
               <Link

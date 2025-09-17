@@ -3,6 +3,7 @@ generator client {
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -125,7 +126,7 @@ model CorporateTitle {
   name      String
   metaCode  String
   createdAt DateTime  @default(now())
-  vacancy   Vacancy[]
+  Vacancy   Vacancy[]
 }
 
 model EmploymentType {
@@ -204,6 +205,7 @@ model News {
   title       String
   description String   @db.Text
   image       String
+  category    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
