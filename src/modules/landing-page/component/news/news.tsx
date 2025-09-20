@@ -10,16 +10,16 @@ const newsArticles = [
     description: `
 🌍 At the WHO Academy, we believe that access to high-quality lifelong learning opportunities should be universal — no matter where you live, or what language you speak.
 
-📚 That’s why we’ve built an online learning platform that delivers personalized learning experiences tailored to each learner’s needs — helping you stay current, adapt to change and take courses grounded in the latest science.<br /><br />
+📚 That’s why we’ve built an online learning platform that delivers personalized learning experiences tailored to each learner’s needs — helping you stay current, adapt to change and take courses grounded in the latest science.
 
-The online learning platform offers:<br /><br />
+The online learning platform offers:
 
-🔹 Free courses developed by WHO experts and adult learning specialists.<br />
-🔹 A curated portfolio of more than 300 courses available across 12 languages.<br />
-🔹 Interactive and collaborative features to enhance engagement.<br />
-🔹 A strong focus on accessibility and inclusion.<br /><br />
+🔹 Free courses developed by WHO experts and adult learning specialists.
+🔹 A curated portfolio of more than 300 courses available across 12 languages.
+🔹 Interactive and collaborative features to enhance engagement.
+🔹 A strong focus on accessibility and inclusion.
 
-🎉 Whether you're looking to deepen your expertise, grow your career or simply expand your knowledge, this platform is your gateway to lifelong learning in health.<br /><br />
+🎉 Whether you're looking to deepen your expertise, grow your career or simply expand your knowledge, this platform is your gateway to lifelong learning in health]
 
 Register for free and start your learning journey today ➡ <a href="https://whoacademy.org">whoacademy.org</a>
 `,
@@ -34,7 +34,7 @@ Register for free and start your learning journey today ➡ <a href="https://who
 
 සිසු හෙද පුහුණුව සඳහා බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ කොළඹ, කළුතර, ගම්පහ සහ කෑගල්ල දිස්ත්‍රික්කවලට අදාළව අනිද්දා (20) සහ 21 දිනවල කොළඹ 10, සෞඛ්‍ය හා ජනමාධ්‍ය අමාත්‍යාංශයේ දී පැවැත්වේ.
 
-මහනුවර, මාතලේ සහ නුවරඑළිය දිස්ත්‍රික්කවලට අදාළ සිසු හෙද පුහුණුව සඳහා බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ 2025/09/20 සහ 2025/09/21 දිනවල මහනුවර හෙද විදුහලේ දී පැවැත්වේ.<br /><br />
+මහනුවර, මාතලේ සහ නුවරඑළිය දිස්ත්‍රික්කවලට අදාළ සිසු හෙද පුහුණුව සඳහා බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ 2025/09/20 සහ 2025/09/21 දිනවල මහනුවර හෙද විදුහලේ දී පැවැත්වේ.
 
 මෙම සම්මුඛ පරීක්ෂණවලට පැමිණිය යුතු වන්නේ සෞඛ්‍ය හා ජනමාධ්‍ය අමාත්‍යාංශය විසින් නිල වශයෙන් දැනුම් දුන් පුද්ගලයන් පමණක් බව සෞඛ්‍ය හා ජනමාධ්‍ය අමාත්‍යාංශය නිවේදනය කරයි.
 `,
