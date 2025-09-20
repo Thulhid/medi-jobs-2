@@ -1,60 +1,63 @@
 "use client";
 
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
 const newsArticles = [
-    {
-        id: 1,
-        title: "Sri Lanka Launches New Healthcare Initiative",
-        description:
-            "The Ministry of Health announced a nationwide healthcare program aimed at improving access to medical services in rural areas. The program will focus on providing modern facilities and better-trained staff.",
-        image: "/images/news/healthcare-initiative.jpg",
-        category: "Health",
-    },
-    {
-        id: 2,
-        title: "Colombo Medical Conference 2025 Announced",
-        description:
-            "The annual Colombo Medical Conference will bring together top medical professionals from around the world to share knowledge, research, and new technology in the healthcare sector.",
-        image: "/images/news/medical-conference.jpg",
-        category: "Events",
-    },
-    {
-        id: 3,
-        title: "Breakthrough in Cardiology Research",
-        description:
-            "Researchers at the National Hospital have reported a major breakthrough in cardiology treatments, potentially improving outcomes for patients with heart disease across the country.",
-        image: "/images/news/cardiology-breakthrough.jpg",
-        category: "Research",
-    },
-    {
-        id: 4,
-        title: "New Radiology Department Opens in Kandy",
-        description:
-            "Kandy Teaching Hospital has officially opened a state-of-the-art radiology department, equipped with the latest imaging technology to better diagnose and treat patients.",
-        image: "/images/news/radiology-department.jpg",
-        category: "Infrastructure",
-    },
+  {
+    id: 1,
+    title: "WHO Academy online learning platform.",
+    description: `
+🌍 At the WHO Academy, we believe that access to high-quality lifelong learning opportunities should be universal — no matter where you live, or what language you speak.
+
+📚 That’s why we’ve built an online learning platform that delivers personalized learning experiences tailored to each learner’s needs — helping you stay current, adapt to change and take courses grounded in the latest science.<br /><br />
+
+The online learning platform offers:<br /><br />
+
+🔹 Free courses developed by WHO experts and adult learning specialists.<br />
+🔹 A curated portfolio of more than 300 courses available across 12 languages.<br />
+🔹 Interactive and collaborative features to enhance engagement.<br />
+🔹 A strong focus on accessibility and inclusion.<br /><br />
+
+🎉 Whether you're looking to deepen your expertise, grow your career or simply expand your knowledge, this platform is your gateway to lifelong learning in health.<br /><br />
+
+Register for free and start your learning journey today ➡ <a href="https://whoacademy.org">whoacademy.org</a>
+`,
+    image: "/images/news/news1.jpg",
+    category: "Health",
+  },
+  {
+    id: 2,
+    title: "සිසු හෙද පුහුණුවට බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ",
+    description: `
+සිසු හෙද පුහුණුවට බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ අද සහ හෙට පැවැත්වේ.
+
+සිසු හෙද පුහුණුව සඳහා බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ කොළඹ, කළුතර, ගම්පහ සහ කෑගල්ල දිස්ත්‍රික්කවලට අදාළව අනිද්දා (20) සහ 21 දිනවල කොළඹ 10, සෞඛ්‍ය හා ජනමාධ්‍ය අමාත්‍යාංශයේ දී පැවැත්වේ.
+
+මහනුවර, මාතලේ සහ නුවරඑළිය දිස්ත්‍රික්කවලට අදාළ සිසු හෙද පුහුණුව සඳහා බඳවා ගැනීමේ සම්මුඛ පරීක්ෂණ 2025/09/20 සහ 2025/09/21 දිනවල මහනුවර හෙද විදුහලේ දී පැවැත්වේ.<br /><br />
+
+මෙම සම්මුඛ පරීක්ෂණවලට පැමිණිය යුතු වන්නේ සෞඛ්‍ය හා ජනමාධ්‍ය අමාත්‍යාංශය විසින් නිල වශයෙන් දැනුම් දුන් පුද්ගලයන් පමණක් බව සෞඛ්‍ය හා ජනමාධ්‍ය අමාත්‍යාංශය නිවේදනය කරයි.
+`,
+    image: "/images/news/news2.png",
+    category: "Education",
+  },
 ];
 
 export const News = () => {
   return (
-    <section className='w-full mb-4'>
-
+    <section className="w-full mb-4">
       <div className="items-center justify-center w-full relative">
         <Image
-          src={'/images/landing_page_slider/1 (4).jpg'}
-          alt={'medijobs.lk'}
+          src={"/images/landing_page_slider/1 (4).jpg"}
+          alt={"medijobs.lk"}
           width={1920}
           height={1080}
-          className={'w-full h-64 object-cover'}
+          className={"w-full h-64 object-cover"}
         />
         <div className="absolute inset-0 bg-black/50 z-0" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
-          </div>
+          <div className="text-center text-white"></div>
         </div>
       </div>
 
@@ -63,14 +66,14 @@ export const News = () => {
           <h2 className="text-2xl font-semibold mb-4">News</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {newsArticles.map((article) => (
             <div
               key={article.id}
               className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
             >
               <div
-                className="relative h-48 cursor-pointer group"
+                className="relative h-60 cursor-pointer group"
                 onClick={() => {}}
               >
                 <Image
@@ -86,11 +89,11 @@ export const News = () => {
                   </span>
                 </div>
               </div>
-              <div className="p-4">
+              <div className="p-4 h-60">
                 <h3 className="font-semibold text-lg mb-2 line-clamp-2">
                   {article.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-3">
+                <p className="text-gray-600 text-sm mb-3 line-clamp-6">
                   {article.description}
                 </p>
               </div>
@@ -100,11 +103,15 @@ export const News = () => {
 
         {newsArticles.length === 0 && (
           <div className="text-center py-12">
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">No News Articles</h3>
-            <p className="text-gray-500">Check back later for the latest healthcare news.</p>
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">
+              No News Articles
+            </h3>
+            <p className="text-gray-500">
+              Check back later for the latest healthcare news.
+            </p>
           </div>
         )}
       </div>
     </section>
-  )
-}
+  );
+};
